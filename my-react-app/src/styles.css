@@ -1,70 +1,129 @@
+/* Algemene stijl */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-  }
-  
-  .App {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  .App-header {
-    padding: 20px;
-  }
-  
-  .App-header h1 {
-    font-size: 2rem;
-    margin: 0;
-  }
-  
-  .App-header input {
-    padding: 10px;
-    font-size: 1rem;
-    margin-top: 20px;
-    width: 300px;
-  }
-  
-  .crypto-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .crypto-item {
-    padding: 10px;
-    margin: 10px 0;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .crypto-item h2 {
-    font-size: 1.2rem;
-    margin: 0 0 5px 0;
-  }
-  
-  .crypto-item p {
-    font-size: 1rem;
-    margin: 0;
-  }
-  
-  .price-up {
-    color: green;
-  }
-  
-  .price-down {
-    color: red;
-  }
-  
-  .price-neutral {
-    color: black;
-  }
-  
-  button {
-    padding: 5px 10px;
-    font-size: 1rem;
-    cursor: pointer;
-  }
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0d1117;
+  color: #e6edf3;
+}
+
+/* Applicatiecontainer */
+.App {
+  text-align: center;
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* Header */
+.App-header {
+  padding: 20px;
+}
+
+.App-header h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.App-header input {
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 10px;
+  width: 300px;
+  background-color: #161b22;
+  color: #e6edf3;
+  border: 1px solid #30363d;
+  border-radius: 5px;
+}
+
+/* Tabel */
+.crypto-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.crypto-table th, 
+.crypto-table td {
+  padding: 16px; /* Increased padding for more spacing */
+  text-align: left;
+  border-top: 1px solid #30363d; /* Added border above */
+  border-bottom: 1px solid #30363d; /* Added border below */
+}
+
+.crypto-table th {
+  background-color: #161b22;
+  color: #e6edf3;
+  cursor: pointer;
+}
+
+.crypto-table th:hover {
+  background-color: #21262d;
+}
+
+.crypto-table tbody tr:hover {
+  background-color: #21262d;
+}
+
+/* Crypto naam en symbool */
+.crypto-name {
+  display: flex;
+  align-items: center;
+}
+
+.crypto-name img {
+  width: 30px; /* Reduced width */
+  height: 30px; /* Reduced height */
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+/* Kolommen uitlijnen */
+.crypto-table td {
+  vertical-align: middle;
+}
+
+/* Prijswijzigingen */
+.price-up {
+  color: #16c784;
+  font-weight: bold;
+}
+
+.price-down {
+  color: #ea3943;
+  font-weight: bold;
+}
+
+/* Favorieten ster */
+.favorite-icon {
+  cursor: pointer;
+  color: #8b949e;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.favorite-icon:hover, 
+.favorite-icon.active {
+  color: #facc15;
+}
+
+/* "Meer info" link */
+.more-info {
+  color: #58a6ff;
+  text-decoration: none;
+}
+
+.more-info:hover {
+  text-decoration: underline;
+}
+
+/* Trend chart placeholder */
+.trend-chart {
+  width: 100px;
+  height: 30px;
+  background-color: #30363d;
+  border-radius: 5px;
+}

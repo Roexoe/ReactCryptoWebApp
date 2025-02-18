@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getCryptoList } from '../services/api';
-import CryptoList from '../components/Cryptolist';
 import SearchBar from '../components/SearchBar';
+import CryptoTable from '../components/CryptoTable';
 
 const Home = () => {
   const [cryptoData, setCryptoData] = useState([]);
@@ -15,11 +15,15 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const filteredCryptoData = cryptoData.filter((coin) =>
+    coin.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
       <h1>Crypto Dashboard</h1>
       <SearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-      <CryptoList cryptoData={cryptoData} searchQuery={searchQuery} />
+      <CryptoTable cryptoData={filteredCryptoData} />
     </div>
   );
 };
