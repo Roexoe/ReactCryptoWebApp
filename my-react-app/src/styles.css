@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .App {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .App-header {
+    padding: 20px;
+  }
+  
+  .App-header h1 {
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  .App-header input {
+    padding: 10px;
+    font-size: 1rem;
+    margin-top: 20px;
+    width: 300px;
+  }
+  
+  .crypto-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .crypto-item {
+    padding: 10px;
+    margin: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .crypto-item h2 {
+    font-size: 1.2rem;
+    margin: 0 0 5px 0;
+  }
+  
+  .crypto-item p {
+    font-size: 1rem;
+    margin: 0;
+  }
+  
+  .price-up {
+    color: green;
+  }
+  
+  .price-down {
+    color: red;
+  }
+  
+  .price-neutral {
+    color: black;
+  }
+  
+  button {
+    padding: 5px 10px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
