@@ -15,6 +15,7 @@ const validateCryptoData = (data) => {
     market_cap: coin.market_cap || 0,
     total_volume: coin.total_volume || 0,
     circulating_supply: coin.circulating_supply || 0,
+    sparkline_in_7d: coin.sparkline_in_7d || { price: [] }, // Ensure sparkline data is included
   }));
 };
 
@@ -26,10 +27,11 @@ export const getCryptoList = async () => {
         order: 'market_cap_desc',
         per_page: 100,
         page: 1,
-        sparkline: false,
-        price_change_percentage: '1h,24h,7d', // Ensure these fields are included
+        sparkline: true, // Ensure sparkline data is included
+        price_change_percentage: '1h,24h,7d',
       },
     });
+    console.log(response.data); // Controleer de API-respons
     return validateCryptoData(response.data);
   } catch (error) {
     console.error('Error fetching crypto data:', error);

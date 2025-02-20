@@ -81,10 +81,7 @@ body {
   border-radius: 50%;
 }
 
-/* Kolommen uitlijnen */
-.crypto-table td {
-  vertical-align: middle;
-}
+
 
 /* Prijswijzigingen */
 .price-up {
@@ -120,10 +117,13 @@ body {
   text-decoration: underline;
 }
 
-/* Trend chart placeholder */
+
 .trend-chart {
   width: 100px;
-  height: 30px;
-  background-color: #30363d;
-  border-radius: 5px;
+  height: 50px;
+}
+
+.crypto-table td {
+  vertical-align: middle;
+  height: 100px; /* Adjust the height to ensure enough space for the chart */
 }

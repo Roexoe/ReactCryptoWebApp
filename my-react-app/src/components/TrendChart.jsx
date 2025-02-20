@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Chart, LineController, LineElement, PointElement, LinearScale, Title, CategoryScale } from 'chart.js';
 
@@ -23,7 +22,9 @@ const TrendChart = ({ sparklineData }) => {
             borderColor: sparklineData[sparklineData.length - 1] > sparklineData[0] ? 'green' : 'red',
             backgroundColor: gradient,
             fill: true,
-            tension: 0.4, // Smooth line
+            tension: 1, // Smooth line
+            borderWidth: 2, // Make the line thinner
+            pointRadius: 0, // Remove the points
           },
         ],
       },
