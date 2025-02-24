@@ -8,16 +8,17 @@ body {
   align-items: center;
   background-color: #0d1117;
   color: #e6edf3;
-
-  width: 100vw; /* Zorg ervoor dat de body de volledige breedte van het scherm vult */
+  height: 100%; /* Zorg ervoor dat de body de volledige hoogte van het scherm vult */
+  width: 100%; /* Zorg ervoor dat de body de volledige breedte van het scherm vult */
 }
 
 /* Applicatiecontainer */
 .App {
   text-align: center;
-  padding: 20px;
+  padding: 100px;
   width: 100%; /* Zorg ervoor dat de container de volledige breedte van het scherm vult */
-  max-width: 100%; /* Verwijder de maximale breedte beperking */
+  max-width: 1200px; /* Voeg een maximale breedte toe voor betere leesbaarheid */
+  margin: 0 auto; /* Centreer de container horizontaal */
 }
 
 /* Tabel */
@@ -30,9 +31,9 @@ body {
 .crypto-table th, 
 .crypto-table td {
   padding: 16px; /* Increased padding for more spacing */
-  text-align: left;
+  text-align: center; /* Center the text horizontally */
   border-top: 1px solid #30363d; /* Added border above */
-  border-bottom: 1px solid #30363d; /* Added border below */
+  vertical-align: middle; /* Center the text vertically */
 }
 
 .crypto-table th {
@@ -98,10 +99,11 @@ body {
 
 .trend-chart {
   width: 300px; /* Maak het grafiekgedeelte breder */
-  height: 150px; /* Pas de hoogte van het grafiekgedeelte aan */
+  height: 100px; /* Pas de hoogte van het grafiekgedeelte aan */
 }
 
 .crypto-table td {
   vertical-align: middle;
-  height: 100px; /* Adjust the height to ensure enough space for the chart */
+  height: 150px; /* Adjust the height to ensure enough space for the chart */
+  text-align: center; /* Center the text horizontally */
 }
