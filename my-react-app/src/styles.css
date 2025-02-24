@@ -8,40 +8,21 @@ body {
   align-items: center;
   background-color: #0d1117;
   color: #e6edf3;
+
+  width: 100vw; /* Zorg ervoor dat de body de volledige breedte van het scherm vult */
 }
 
 /* Applicatiecontainer */
 .App {
   text-align: center;
   padding: 20px;
-  width: 90%;
-  max-width: 1200px;
-}
-
-/* Header */
-.App-header {
-  padding: 20px;
-}
-
-.App-header h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-}
-
-.App-header input {
-  padding: 10px;
-  font-size: 1rem;
-  margin-top: 10px;
-  width: 300px;
-  background-color: #161b22;
-  color: #e6edf3;
-  border: 1px solid #30363d;
-  border-radius: 5px;
+  width: 100%; /* Zorg ervoor dat de container de volledige breedte van het scherm vult */
+  max-width: 100%; /* Verwijder de maximale breedte beperking */
 }
 
 /* Tabel */
 .crypto-table {
-  width: 100%;
+  width: 100%; /* Zorg ervoor dat de tabel de volledige breedte van de container vult */
   border-collapse: collapse;
   margin-top: 20px;
 }
@@ -81,8 +62,6 @@ body {
   border-radius: 50%;
 }
 
-
-
 /* Prijswijzigingen */
 .price-up {
   color: #16c784;
@@ -117,10 +96,9 @@ body {
   text-decoration: underline;
 }
 
-
 .trend-chart {
-  width: 100px;
-  height: 50px;
+  width: 300px; /* Maak het grafiekgedeelte breder */
+  height: 150px; /* Pas de hoogte van het grafiekgedeelte aan */
 }
 
 .crypto-table td {
