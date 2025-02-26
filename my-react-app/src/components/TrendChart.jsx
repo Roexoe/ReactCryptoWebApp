@@ -21,7 +21,7 @@ const TrendChart = ({ sparklineData }) => {
             data: sparklineData,
             borderColor: sparklineData[sparklineData.length - 1] > sparklineData[0] ? 'green' : 'red',
             backgroundColor: gradient,
-            fill: true,
+            fill: false,
             tension: 1, // Smooth line
             borderWidth: 2, // Make the line thinner
             pointRadius: 0, // Remove the points

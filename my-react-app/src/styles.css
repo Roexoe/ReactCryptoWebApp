@@ -90,7 +90,6 @@ body {
   border-collapse: collapse;
   margin-top: 20px;
 }
-
 .crypto-table th, 
 .crypto-table td {
   padding: 16px;
@@ -98,6 +97,7 @@ body {
   border-top: 1px solid #30363d;
   border-bottom: 1px solid #30363d;
 }
+
 
 .crypto-table th {
   background-color: #161b22;
@@ -163,4 +163,47 @@ body {
 .crypto-table td {
   vertical-align: middle;
   height: 100px;
+}
+
+/* Zoekbalk */
+.search-bar {
+  width: 100%;
+  max-width: 600px; /* Voeg een maximale breedte toe voor betere leesbaarheid */
+  margin: 20px auto; /* Centreer de zoekbalk horizontaal en voeg wat marge toe boven en onder */
+  display: flex;
+  align-items: center;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+  color: #e6edf3;
+  font-size: 1rem;
+}
+
+.search-bar input::placeholder {
+  color: #8b949e;
+}
+
+.search-bar button {
+  background-color: #21262d;
+  border: none;
+  color: #e6edf3;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 5px;
+  margin-left: 10px;
+  transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+  background-color: #30363d;
+
 }

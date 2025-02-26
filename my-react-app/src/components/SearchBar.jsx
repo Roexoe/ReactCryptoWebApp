@@ -1,13 +1,15 @@
 const SearchBar = ({ searchQuery, setSearchQuery }) => {
-    return (
+  return (
+    <div className="search-bar">
       <input
         type="text"
         placeholder="Zoek een coin..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
-    );
-  };
-  
-  export default SearchBar;
-  
+      <button type="submit">Zoek</button>
+    </div>
+  );
+};
+
+export default SearchBar;
