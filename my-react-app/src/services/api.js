@@ -41,7 +41,16 @@ export const getCryptoList = async () => {
 
 export const getCoinDetails = async (coinId) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/coins/${coinId}`);
+    const response = await axios.get(`${API_BASE_URL}/coins/${coinId}`, {
+      params: {
+        localization: false,
+        tickers: false,
+        market_data: true,
+        community_data: false,
+        developer_data: false,
+        sparkline: true // Add this parameter to get sparkline data
+      }
+    });
     return response.data;
   } catch (error) {
     console.error('Error fetching coin details:', error);

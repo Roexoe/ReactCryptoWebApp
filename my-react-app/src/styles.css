@@ -206,3 +206,24 @@ body {
   background-color: #30363d;
 
 }
+
+/* CoinDetailPage specific styles */
+/* Chart specific styling */
+.chart-container {
+  width: 100%;
+  height: 300px;
+  background-color: #161b22;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.coin-detail-charts {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.coin-detail-charts h2 {
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
