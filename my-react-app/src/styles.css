@@ -27,7 +27,107 @@ body, html {
   width: 100%;
   max-width: 100%; /* Verwijder de max-width beperking */
   box-sizing: border-box;
-  padding: 0 40px; /* Voeg padding toe aan beide zijkanten */
+  padding: 0 60px; /* Increased from 40px to 60px */
+}
+
+/* Home container styles */
+.home-container {
+  padding: 20px 0;
+}
+
+.home-container h1 {
+  margin-bottom: 20px;
+}
+
+/* Market insights container */
+.market-insights-container {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 20px 25px;
+  margin: 30px 0;
+}
+
+.market-insights-container h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.insight-card {
+  background-color: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 15px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.insight-card:hover {
+  transform: translateY(-2px);
+  border-color: #58a6ff;
+}
+
+.insight-card h3 {
+  color: #8b949e;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.insight-card p {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+/* Sentiment meter styling */
+.sentiment-meter {
+  height: 8px;
+  background-color: #30363d;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.positive-sentiment {
+  height: 100%;
+  background-color: #16c784;
+}
+
+.negative-sentiment {
+  height: 100%;
+  background-color: #ea3943;
+}
+
+/* Performance styling */
+.performer-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.performer-info img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-bottom: 8px;
+}
+
+.performer-info p {
+  margin: 2px 0;
+  font-size: 1rem;
+}
+
+.performer-info p:first-of-type {
+  font-weight: 500;
 }
 
 /* Header styling - enhanced with better spacing and shadow */
@@ -1050,4 +1150,106 @@ body {
     transform: rotate(90deg);
     margin: 10px 0;
   }
+
+  .content {
+    padding: 0 30px;
+  }
+  
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .compact-chart-container {
+    height: 200px;
+  }
+  
+  .performers-chart-container {
+    grid-column: span 1;
+    flex-direction: column;
+  }
+  
+  .performers-section {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid #30363d;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .market-share-chart {
+    padding-left: 0;
+  }
+  
+  .compact-chart-container {
+    height: 200px;
+  }
+}
+
+/* Market share container */
+.market-share-container {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  padding: 20px 25px;
+  margin: 30px 0;
+}
+
+.market-share-container h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+/* Updated styles for the performers and chart container */
+.performers-chart-container {
+  grid-column: span 2; /* Make this card span two columns */
+  display: flex;
+  align-items: stretch;
+}
+
+.performers-section {
+  flex: 1;
+  padding-right: 15px;
+  border-right: 1px solid #30363d;
+}
+
+.market-share-chart {
+  flex: 1;
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Trending coins list */
+.trending-coins-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.trending-coins-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.trending-coins-list li img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.trending-coins-list li p {
+  margin: 0;
+  font-size: 1rem;
+  color: #e6edf3;
+}
+
+/* Chart container */
+.compact-chart-container {
+  position: relative;
+  height: 200px;
+  width: 100%;
+  margin: 20px 0;
 }
