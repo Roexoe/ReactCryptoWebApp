@@ -3,21 +3,26 @@ import { createContext, useState, useEffect } from 'react';
 export const FavoritesContext = createContext();
 
 export const FavoritesProvider = ({ children }) => {
-  const [favorites, setFavorites] = useState([]);
+  // Load favorites from localStorage on initial render
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavorites = localStorage.getItem('cryptoFavorites');
+    return savedFavorites ? JSON.parse(savedFavorites) : [];
+  });
 
+  // Save favorites to localStorage whenever it changes
   useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    setFavorites(storedFavorites);
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem('cryptoFavorites', JSON.stringify(favorites));
   }, [favorites]);
 
+  // Toggle favorite status
   const toggleFavorite = (coinId) => {
-    setFavorites((prev) =>
-      prev.includes(coinId) ? prev.filter((id) => id !== coinId) : [...prev, coinId]
-    );
+    setFavorites(prevFavorites => {
+      if (prevFavorites.includes(coinId)) {
+        return prevFavorites.filter(id => id !== coinId);
+      } else {
+        return [...prevFavorites, coinId];
+      }
+    });
   };
 
   return (

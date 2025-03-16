@@ -1,26 +1,28 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { FavoritesProvider } from './context/FavoritesContext';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Home from './pages/Home';
-import CoinDetailPage from './pages/CoinDetail';
-import Header from './components/Header'; // Import the Header component
-import Footer from './components/Footer'; // Import the Footer component
+import Favorites from './pages/Favorites';
+import CoinDetail from './pages/CoinDetail';
 import './styles.css';
 
 function App() {
   return (
     <FavoritesProvider>
-      <div className="app-container">
-        <Router>
+      <Router>
+        <div className="app-container">
           <Header />
-          <div className="content">
+          <main className="content">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/coin/:coinId" element={<CoinDetailPage />} />
+              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/coin/:id" element={<CoinDetail />} />
             </Routes>
-          </div>
-        </Router>
-        <Footer />
-      </div>
+          </main>
+          <Footer />
+        </div>
+      </Router>
     </FavoritesProvider>
   );
 }

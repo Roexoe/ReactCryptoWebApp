@@ -49,7 +49,6 @@ const Footer = () => {
             <h3>Navigation</h3>
             <ul>
               <li><NavLink to="/">Home</NavLink></li>
-              <li><NavLink to="/trending">Trending</NavLink></li>
               <li><NavLink to="/favorites">Favorites</NavLink></li>
             </ul>
           </div>

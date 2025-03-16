@@ -187,3 +187,14 @@ export const getCoinMarketChart = async (coinId, days) => {
     return null;
   }
 };
+
+export const getGlobalMarketData = async () => {
+  try {
+    const response = await fetch('https://api.coingecko.com/api/v3/global');
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching global market data:', error);
+    throw error;
+  }
+};

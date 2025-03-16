@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Home, Sparkles, Star, Moon } from 'lucide-react';
+import { Home, Star, Moon } from 'lucide-react';
 import logo from '../assets/Coin-radar-icon.png';
 
 const Header = () => {
@@ -16,12 +16,6 @@ const Header = () => {
             <Link to="/">
               <Home size={18} />
               Home
-            </Link>
-          </li>
-          <li>
-            <Link to="/trending">
-              <Sparkles size={18} />
-              Trending
             </Link>
           </li>
           <li>
