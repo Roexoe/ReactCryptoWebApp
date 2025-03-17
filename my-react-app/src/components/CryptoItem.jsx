@@ -16,6 +16,8 @@ const CryptoItem = ({ coin, index }) => {
 
   // Format large numbers
   const formatNumber = (value) => {
+    if (value === null || value === undefined) return 'N/A';
+    
     if (value >= 1000000000) {
       return `€${(value / 1000000000).toFixed(2)}B`;
     } else if (value >= 1000000) {
@@ -28,13 +30,13 @@ const CryptoItem = ({ coin, index }) => {
   return (
     <tr onClick={handleRowClick}>
       <td onClick={(e) => e.stopPropagation()}>
-      <button 
-  className={`favorite-icon ${isFavorite ? "active" : ""}`} 
-  onClick={() => toggleFavorite(coin.id)}
-  aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
->
-  ★
-</button>
+        <button 
+          className={`favorite-icon ${isFavorite ? "active" : ""}`} 
+          onClick={() => toggleFavorite(coin.id)}
+          aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+        >
+          ★
+        </button>
       </td>
       <td className="font-medium">{index + 1}</td>
       <td>
@@ -42,12 +44,15 @@ const CryptoItem = ({ coin, index }) => {
           <img src={coin.image || "/placeholder.svg"} alt={coin.name} />
           <div className="crypto-name-text">
             <span className="font-medium">{coin.name}</span>
-            <span className="crypto-symbol">{coin.symbol.toUpperCase()}</span>
+            <span className="crypto-symbol">{coin.symbol?.toUpperCase() || ''}</span>
           </div>
         </div>
       </td>
       <td className="text-right font-medium">
-        €{coin.current_price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+        {coin.current_price !== null && coin.current_price !== undefined ? 
+          `€${coin.current_price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}` : 
+          'N/A'
+        }
       </td>
       <td className={`text-right ${coin.price_change_percentage_1h_in_currency > 0 ? 'price-up' : 'price-down'}`}>
         <div className="price-change">
@@ -55,7 +60,7 @@ const CryptoItem = ({ coin, index }) => {
             <ArrowUp size={16} /> : 
             <ArrowDown size={16} />
           }
-          {Math.abs(coin.price_change_percentage_1h_in_currency).toFixed(2)}%
+          {Math.abs(coin.price_change_percentage_1h_in_currency || 0).toFixed(2)}%
         </div>
       </td>
       <td className={`text-right ${coin.price_change_percentage_24h_in_currency > 0 ? 'price-up' : 'price-down'}`}>
@@ -64,7 +69,7 @@ const CryptoItem = ({ coin, index }) => {
             <ArrowUp size={16} /> : 
             <ArrowDown size={16} />
           }
-          {Math.abs(coin.price_change_percentage_24h_in_currency).toFixed(2)}%
+          {Math.abs(coin.price_change_percentage_24h_in_currency || 0).toFixed(2)}%
         </div>
       </td>
       <td className={`text-right ${coin.price_change_percentage_7d_in_currency > 0 ? 'price-up' : 'price-down'}`}>
@@ -73,21 +78,24 @@ const CryptoItem = ({ coin, index }) => {
             <ArrowUp size={16} /> : 
             <ArrowDown size={16} />
           }
-          {Math.abs(coin.price_change_percentage_7d_in_currency).toFixed(2)}%
+          {Math.abs(coin.price_change_percentage_7d_in_currency || 0).toFixed(2)}%
         </div>
       </td>
       <td className="text-right font-medium">{formatNumber(coin.market_cap)}</td>
       <td className="text-right font-medium">{formatNumber(coin.total_volume)}</td>
       <td className="text-right">
-        {coin.circulating_supply.toLocaleString()} {coin.symbol.toUpperCase()}
+        {coin.circulating_supply !== null && coin.circulating_supply !== undefined ? 
+          `${coin.circulating_supply.toLocaleString()} ${coin.symbol?.toUpperCase() || ''}` : 
+          'N/A'
+        }
       </td>
       <td className="text-right">
         <div className="trend-chart">
-          {coin.sparkline_in_7d && coin.sparkline_in_7d.price.length > 0 ? (
+          {coin.sparkline_in_7d && coin.sparkline_in_7d.price && coin.sparkline_in_7d.price.length > 0 ? (
             <TrendChart 
               sparklineData={coin.sparkline_in_7d.price} 
               positive={coin.price_change_percentage_7d_in_currency > 0}
-              compact={true} // Voeg deze prop toe
+              compact={true}
             />
           ) : null}
         </div>

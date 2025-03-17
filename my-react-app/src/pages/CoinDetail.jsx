@@ -2,16 +2,13 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getCoinDetails, getCoinMarketChart } from '../services/api';
 import TrendChart from '../components/TrendChart';
-import { ArrowUp, ArrowDown, ChevronsUpDown, RefreshCw } from 'lucide-react';
+import { ArrowUp, ArrowDown, ChevronsUpDown } from 'lucide-react';
 
 const CoinDetailPage = () => {
   const { coinId } = useParams();
   const [coin, setCoin] = useState(null);
-  const [marketData1h, setMarketData1h] = useState(null);
-  const [marketData24h, setMarketData24h] = useState(null);
   const [marketData7d, setMarketData7d] = useState(null);
-  const [marketData30d, setMarketData30d] = useState(null);
-  const [activeTimeframe, setActiveTimeframe] = useState('24h'); // Default to 24h
+  const [activeTimeframe, setActiveTimeframe] = useState('7d'); // Default to 7d
   const [performanceTimeframe, setPerformanceTimeframe] = useState('24h');
   
   // Converter state
@@ -25,18 +22,9 @@ const CoinDetailPage = () => {
         const coinData = await getCoinDetails(coinId);
         setCoin(coinData);
 
-        // Fetch market chart data for different timeframes
-        const data1h = await getCoinMarketChart(coinId, 0.042); // 0.042 dagen = 1 uur
-        setMarketData1h(data1h);
-        
-        const data24h = await getCoinMarketChart(coinId, 1); // 1 dag = 24 uur
-        setMarketData24h(data24h);
-        
+        // Fetch market chart data for 7d timeframe
         const data7d = await getCoinMarketChart(coinId, 7);
         setMarketData7d(data7d);
-        
-        const data30d = await getCoinMarketChart(coinId, 30);
-        setMarketData30d(data30d);
         
         // Set initial coin amount based on EUR 100
         if (coinData.market_data?.current_price?.eur) {
@@ -120,12 +108,6 @@ const CoinDetailPage = () => {
           high: Math.max(...(coin.market_data?.sparkline_7d?.price || marketData7d?.prices?.map(p => p[1]) || [])),
           low: Math.min(...(coin.market_data?.sparkline_7d?.price || marketData7d?.prices?.map(p => p[1]) || []))
         };
-      case '30d':
-        return {
-          change: coin.market_data.price_change_percentage_30d,
-          high: Math.max(...(coin.market_data?.sparkline_30d?.price || marketData30d?.prices?.map(p => p[1]) || [])),
-          low: Math.min(...(coin.market_data?.sparkline_30d?.price || marketData30d?.prices?.map(p => p[1]) || []))
-        };
       default:
         return { change: 0, high: 0, low: 0 };
     }
@@ -177,60 +159,12 @@ const CoinDetailPage = () => {
           
           <div className="time-period-selector">
             <button 
-              className={activeTimeframe === '1h' ? 'active' : ''} 
-              onClick={() => setActiveTimeframe('1h')}
-            >
-              1H
-            </button>
-            <button 
-              className={activeTimeframe === '24h' ? 'active' : ''} 
-              onClick={() => setActiveTimeframe('24h')}
-            >
-              24H
-            </button>
-            <button 
               className={activeTimeframe === '7d' ? 'active' : ''} 
               onClick={() => setActiveTimeframe('7d')}
             >
               7D
             </button>
-            <button 
-              className={activeTimeframe === '30d' ? 'active' : ''} 
-              onClick={() => setActiveTimeframe('30d')}
-            >
-              30D
-            </button>
           </div>
-          
-          {/* 1H Chart */}
-          {activeTimeframe === '1h' && (
-            <div className="chart-container">
-              {marketData1h?.prices ? (
-                <TrendChart 
-                  sparklineData={marketData1h.prices.map(price => price[1])}
-                  timestamps={marketData1h.prices.map(price => price[0])}
-                  timeframe="1h"
-                />
-              ) : (
-                <p className="no-data-message">Geen 1-uurs grafiekgegevens beschikbaar</p>
-              )}
-            </div>
-          )}
-          
-          {/* 24H Chart */}
-          {activeTimeframe === '24h' && (
-            <div className="chart-container">
-              {marketData24h?.prices ? (
-                <TrendChart 
-                  sparklineData={marketData24h.prices.map(price => price[1])}
-                  timestamps={marketData24h.prices.map(price => price[0])}
-                  timeframe="24h"
-                />
-              ) : (
-                <p className="no-data-message">Geen 24-uurs grafiekgegevens beschikbaar</p>
-              )}
-            </div>
-          )}
           
           {/* 7D Chart */}
           {activeTimeframe === '7d' && (
@@ -243,21 +177,6 @@ const CoinDetailPage = () => {
                 />
               ) : (
                 <p className="no-data-message">Geen 7-dagen grafiekgegevens beschikbaar</p>
-              )}
-            </div>
-          )}
-          
-          {/* 30D Chart */}
-          {activeTimeframe === '30d' && (
-            <div className="chart-container">
-              {(coin.market_data?.sparkline_30d?.price || marketData30d?.prices) ? (
-                <TrendChart 
-                  sparklineData={coin.market_data?.sparkline_30d?.price || marketData30d?.prices.map(price => price[1])}
-                  timestamps={marketData30d?.prices.map(price => price[0])}
-                  timeframe="30d"
-                />
-              ) : (
-                <p className="no-data-message">Geen 30-dagen grafiekgegevens beschikbaar</p>
               )}
             </div>
           )}
@@ -317,12 +236,6 @@ const CoinDetailPage = () => {
             onClick={() => setPerformanceTimeframe('7d')}
           >
             7D
-          </button>
-          <button 
-            className={performanceTimeframe === '30d' ? 'active' : ''} 
-            onClick={() => setPerformanceTimeframe('30d')}
-          >
-            30D
           </button>
         </div>
         
