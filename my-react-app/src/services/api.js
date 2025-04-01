@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-// Directe verbinding met CoinGecko (zonder CORS proxy)
-const API_BASE_URL = 'https://api.coingecko.com/api/v3';
+// Wijzig de API basis URL om via de proxy te gaan
+const API_BASE_URL = '/api';
 
 // Configure Axios with defaults
 const apiClient = axios.create({
