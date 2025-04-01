@@ -4,6 +4,11 @@ import { FavoritesContext } from '../context/FavoritesContext';
 import TrendChart from './TrendChart';
 import { ArrowUp, ArrowDown, Star } from 'lucide-react'; // Assuming you're using lucide-react for icons
 
+/**
+ * CryptoItem component represents a single row in a cryptocurrency table.
+ * It displays details such as the coin's name, price, market cap, and trends.
+ * Users can click on a row to navigate to the coin's details page or toggle it as a favorite.
+ */
 const CryptoItem = ({ coin, index }) => {
   const { favorites, toggleFavorite } = useContext(FavoritesContext);
   const navigate = useNavigate();

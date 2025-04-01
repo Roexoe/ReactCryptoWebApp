@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// Directe verbinding met CoinGecko (zonder CORS proxy)
 const API_BASE_URL = 'https://api.coingecko.com/api/v3';
 
 // Configure Axios with defaults
@@ -14,10 +15,10 @@ const apiClient = axios.create({
 // Helper function to delay execution (for retries)
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// Vereenvoudigde functie voor API calls zonder cache
+// API call functie zonder cache
 async function makeApiCall(url, params, retries = 3, retryDelay = 1000) {
   try {
-    console.log(`Fetching data from API: ${url}`);
+    console.log(`Fetching fresh data from API: ${url}`);
     const response = await apiClient.get(url, { params });
     return response.data;
   } catch (error) {
@@ -33,7 +34,7 @@ async function makeApiCall(url, params, retries = 3, retryDelay = 1000) {
   }
 }
 
-// API endpoints zonder cache
+// API endpoints
 export const getCoinList = async (page = 1, perPage = 100) => {
   try {
     return await makeApiCall('/coins/markets', {

@@ -1434,3 +1434,108 @@ body {
   height: 300px;
   color: #8b949e;
 }
+
+/* Voeg dit toe aan je bestaande CSS */
+
+.refresh-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.refresh-status p {
+  color: #8b949e;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.refresh-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #21262d;
+  border: 1px solid #30363d;
+  color: #e6edf3;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.refresh-button:hover:not(:disabled) {
+  background-color: #30363d;
+  border-color: #58a6ff;
+}
+
+.refresh-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.refresh-button.refreshing svg {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Voeg deze regels toe aan het einde van je bestaande CSS */
+
+.error-message {
+  color: #ea3943;
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.auto-refresh-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.auto-refresh-toggle input {
+  width: auto;
+  margin: 0;
+}
+
+.auto-refresh-toggle label {
+  color: #8b949e;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+/* Voeg deze stijlen toe aan het einde van je bestaande CSS */
+
+.success-message {
+  color: #16c784;
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.next-refresh-time {
+  color: #58a6ff;
+  font-size: 0.85rem;
+}
+
+.no-data-message {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 30px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.no-data-message p {
+  color: #8b949e;
+  margin-bottom: 20px;
+}
