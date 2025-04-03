@@ -29,16 +29,16 @@ const MarketStats = () => {
     if (num === undefined || num === null) return 'N/A';
     
     if (num >= 1000000000000) {
-      return `${isCurrency ? '$' : ''}${(num / 1000000000000).toFixed(2)}T`;
+      return `${isCurrency ? '€' : ''}${(num / 1000000000000).toFixed(2)}T`;
     }
     if (num >= 1000000000) {
-      return `${isCurrency ? '$' : ''}${(num / 1000000000).toFixed(2)}B`;
+      return `${isCurrency ? '€' : ''}${(num / 1000000000).toFixed(2)}B`;
     }
     if (num >= 1000000) {
-      return `${isCurrency ? '$' : ''}${(num / 1000000).toFixed(2)}M`;
+      return `${isCurrency ? '€' : ''}${(num / 1000000).toFixed(2)}M`;
     }
     
-    return isCurrency ? `$${num.toLocaleString()}` : num.toLocaleString();
+    return isCurrency ? `€${num.toLocaleString()}` : num.toLocaleString();
   };
 
   // Format percentage for display
@@ -81,7 +81,7 @@ const MarketStats = () => {
             Total Market Cap
           </h3>
           <div className="stats-value">
-            {formatNumber(data.total_market_cap?.usd)}
+            {formatNumber(data.total_market_cap?.eur)}
           </div>
           <div className="stats-change">
             24h Change: {formatPercentage(data.market_cap_change_percentage_24h_usd)}
@@ -96,7 +96,7 @@ const MarketStats = () => {
             24h Trading Volume
           </h3>
           <div className="stats-value">
-            {formatNumber(data.total_volume?.usd)}
+            {formatNumber(data.total_volume?.eur)}
           </div>
         </div>
 

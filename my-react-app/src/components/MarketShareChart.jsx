@@ -72,10 +72,10 @@ const MarketShareChart = ({ title = "Market Capitalization Distribution" }) => {
     
     // Format the market caps for display
     const formattedMarketCaps = data.map(cap => {
-      if (cap >= 1000000000000) return `$${(cap / 1000000000000).toFixed(2)}T`;
-      if (cap >= 1000000000) return `$${(cap / 1000000000).toFixed(2)}B`;
-      if (cap >= 1000000) return `$${(cap / 1000000).toFixed(2)}M`;
-      return `$${cap.toLocaleString()}`;
+      if (cap >= 1000000000000) return `€${(cap / 1000000000000).toFixed(2)}T`;
+      if (cap >= 1000000000) return `€${(cap / 1000000000).toFixed(2)}B`;
+      if (cap >= 1000000) return `€${(cap / 1000000).toFixed(2)}M`;
+      return `€${cap.toLocaleString()}`;
     });
     
     // Create new chart
